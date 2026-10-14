@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu lạc bộ Sáng Tạo Trẻ</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fffafd;
+            color: #4a3740;
+            line-height: 1.6;
+        }
+
+        /* PHẦN ĐẦU TRANG */
+        header {
+            background-color: #f4b6cc;
+            color: #65384b;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        /* THANH ĐIỀU HƯỚNG */
+        nav {
+            background-color: #fff0f6;
+            padding: 16px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px #00000010;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #87465f;
+            font-weight: bold;
+            margin: 0 14px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d94f88;
+        }
+
+        /* TRANG CHỦ */
+        .banner {
+            background: linear-gradient(135deg, #f8c8dc, #fff5f9, #fce1eb);
+            text-align: center;
+            min-height: 570px;
+            padding: 110px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner h2 {
+            color: #a13f68;
+            font-size: 50px;
+            margin-bottom: 22px;
+            max-width: 900px;
+        }
+
+        .banner p {
+            font-size: 21px;
+            max-width: 750px;
+            margin: 8px auto;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #df78a1;
+            color: white;
+            padding: 15px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #c95382;
+            transform: translateY(-3px);
+        }
+
+        /* CÁC PHẦN NỘI DUNG */
+        section {
+            padding: 65px 8%;
+            scroll-margin-top: 65px;
+        }
+
+        section h2 {
+            color: #a13f68;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        section p {
+            font-size: 17px;
+        }
+
+        .intro {
+            background-color: white;
+            text-align: center;
+        }
+
+        .intro p {
+            max-width: 850px;
+            margin: 12px auto;
+        }
+
+        /* THÀNH VIÊN */
+        .members {
+            background-color: #fff2f7;
+        }
+
+        .member-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .member-card {
+            background-color: white;
+            width: 280px;
+            padding: 28px 22px;
+            text-align: center;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px #a13f6815;
+            transition: 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 22px #a13f6825;
+        }
+
+        .member-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: #f8c8dc;
+            color: #a13f68;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            font-weight: bold;
+            margin: 0 auto 18px;
+            border: 4px solid #ffe4ef;
+        }
+
+        .member-card h3 {
+            color: #a13f68;
+            margin-bottom: 8px;
+        }
+
+        .member-card p {
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+/* NỘI QUY */
+.rules {
+    background-color: white;
+}
+
+.rules-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.rule-card {
+    background-color: #fff2f7;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #e58bad;
+    transition: 0.3s;
+}
+
+.rule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px #a13f6815;
+}
+
+.rule-card h3 {
+    color: #a13f68;
+    margin-bottom: 10px;
+}
+
+.rule-card p {
+    font-size: 15px;
+}
+
+@media (max-width: 768px) {
+    .rules-container {
+        grid-template-columns: 1fr;
+    }
+}
+        /* HOẠT ĐỘNG */
+        .activities {
+            background-color: white;
+        }
+
+        .activity-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+
+        .activity-card {
+            padding: 28px;
+            background-color: #fff4f8;
+            border-radius: 15px;
+            border-left: 5px solid #e58bad;
+        }
+
+        .activity-card h3 {
+            color: #a13f68;
+            margin-bottom: 12px;
+        }
+
+        /* LỊCH SINH HOẠT */
+        .schedule {
+            background-color: #fff2f7;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #00000008;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #f4d5e1;
+        }
+
+        th {
+            background-color: #e9a0bd;
+            color: #65384b;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fff7fa;
+        }
+
+        /* ĐĂNG KÝ */
+        .register {
+            background-color: white;
+        }
+
+        .register p {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        form {
+            max-width: 650px;
+            margin: auto;
+            background-color: #fff4f8;
+            padding: 32px;
+            border-radius: 18px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+            color: #87465f;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e9b6ca;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #e58bad;
+            border-color: #e58bad;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        form .button {
+            width: 100%;
+        }
+
+        /* CHÂN TRANG */
+        footer {
+            background-color: #87465f;
+            color: white;
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* HIỂN THỊ TRÊN ĐIỆN THOẠI */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 30px;
+            }
+
+            nav a {
+                margin: 6px 8px;
+                font-size: 14px;
+            }
+
+            .banner {
+                min-height: 450px;
+                padding: 75px 20px;
+            }
+
+            .banner h2 {
+                font-size: 34px;
+            }
+
+            .banner p {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 45px 6%;
+            }
+
+            section h2 {
+                font-size: 27px;
+            }
+
+            .member-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th, td {
+                padding: 9px 5px;
+            }
+
+            form {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PHẦN ĐẦU TRANG -->
+    <header>
+        <h1>CLB Trạm thông tin</h1>
+        <p>Đưa tin bằng tâm, lan tỏa bằng tầm!</p>
+    </header>
+
+    <!-- THANH ĐIỀU HƯỚNG -->
+    <nav>
+        <a href="#trangchu">Trang chủ</a>
+        <a href="#gioithieu">Giới thiệu</a>
+        <a href="#thanhvien">Thành viên</a>
+        <a href="#noiquy">Nội quy</a>
+        <a href="#hoatdong">Hoạt động</a>
+        <a href="#lich">Lịch sinh hoạt</a>
+        <a href="#dangky">Đăng ký</a>
+    </nav>
+
+    <!-- TRANG CHỦ -->
+    <div class="banner" id="trangchu">
+        <h2>Chào mừng đến với CLB Trạm Thông Tin</h2>
+        <p>
+            Cùng nhau khám phá những câu chuyện mới, cập nhật thông tin và lan tỏa những giá trị tích cực qua từng trang viết.
+        </p>
+        <p>
+            Một môi trường năng động dành cho những bạn trẻ yêu thích viết lách, sáng tạo nội dung, tìm hiểu sự kiện và truyền tải những góc nhìn chân thực về cuộc sống học đường.
+        </p>
+        <a href="#gioithieu" class="button">Khám phá câu lạc bộ</a>
+    </div>
+
+    <!-- GIỚI THIỆU -->
+    <section class="intro" id="gioithieu">
+        <h2>Giới thiệu câu lạc bộ</h2>
+        <p>
+            CLB Báo chí – Trạm Thông Tin là nơi các bạn học sinh có thể giao lưu, học hỏi và cùng nhau khám phá thế giới báo chí, truyền thông qua những câu chuyện và ý tưởng sáng tạo.
+        </p>
+        <p>
+           Câu lạc bộ hướng đến việc phát triển kỹ năng viết lách, thu thập thông tin, sáng tạo nội dung, giao tiếp và làm việc nhóm, đồng thời nâng cao tinh thần trách nhiệm trong việc truyền tải thông tin.
+        </p>
+        <p>
+            Chúng mình tin rằng mỗi thành viên đều có góc nhìn và tiếng nói riêng, góp phần tạo nên những câu chuyện ý nghĩa và lan tỏa những giá trị tích cực đến cộng đồng học đường.
+        </p>
+    </section>
+
+<!-- THÀNH VIÊN -->
+<section class="members" id="thanhvien">
+    <h2>Thành viên câu lạc bộ</h2>
+
+    <div class="member-container">
+
+        <!-- Chủ nhiệm -->
+        <div class="member-card">
+            <img class="member-avatar"
+                 src="https://i.pinimg.com/736x/b4/01/d6/b401d6aa59eacc0019edcc93a7da8df7.jpg"
+                 alt="Ảnh Lê Ngọc Anh">
+
+            <h3>Lê Ngọc Anh</h3>
+            <p><strong>Chức vụ:</strong> Chủ nhiệm CLB</p>
+            <p>Định hướng hoạt động, quản lý nội dung và dẫn dắt các thành viên phát triển câu lạc bộ.</p>
+        </div>
+
+        <!-- Phó chủ nhiệm nội dung -->
+        <div class="member-card">
+            <img class="member-avatar"
+                 src="https://i.pinimg.com/736x/cd/ad/c2/cdadc28db9ecf17341ee25be95becf61.jpg"
+                 alt="Ảnh Phương Thảo Vy">
+
+            <h3>Phạm Ngọc Huyền</h3>
+            <p><strong>Chức vụ:</strong> Phó chủ nhiệm - Nội dung</p>
+            <p>Phụ trách xây dựng ý tưởng, định hướng nội dung và kiểm duyệt các bài viết, tin tức của câu lạc bộ.</p>
+        </div>
+
+        <!-- Phó chủ nhiệm hoạt động và truyền thông -->
+        <div class="member-card">
+            <img class="member-avatar"
+                 src="https://i.pinimg.com/736x/19/08/b6/1908b6dcbe555a3f9f81aff5f3b2c4df.jpg"
+                 alt="Ảnh Phạm Ngọc Huyền">
+
+            <h3>Phương Thảo Vy</h3>
+            <p><strong>Chức vụ:</strong> Phó chủ nhiệm - Hoạt động và truyền thông</p>
+            <p>Phụ trách tổ chức hoạt động, quản lý tiến độ công việc và phối hợp triển khai các sản phẩm truyền thông của câu lạc bộ.</p>
+        </div>
+
+    </div>
+</section> 
+
+```html
+<!-- NỘI QUY -->
+<section class="rules" id="noiquy">
+    <h2>📋 Nội quy câu lạc bộ</h2>
+
+    <div class="rules-container">
+        <div class="rule-card">
+            <h3>01. Tôn trọng và đoàn kết</h3>
+            <p>Tôn trọng ý kiến, hỗ trợ và hợp tác với các thành viên.</p>
+        </div>
+
+        <div class="rule-card">
+            <h3>02. Có trách nhiệm</h3>
+            <p>Hoàn thành nhiệm vụ được giao và tham gia sinh hoạt đúng giờ.</p>
+        </div>
+
+        <div class="rule-card">
+            <h3>03. Chính xác trong đưa tin</h3>
+            <p>Kiểm chứng thông tin trước khi đăng tải, không lan truyền tin giả.</p>
+        </div>
+
+        <div class="rule-card">
+            <h3>04. Tôn trọng bản quyền</h3>
+            <p>Ghi rõ nguồn tài liệu, hình ảnh và tôn trọng sản phẩm sáng tạo của người khác.</p>
+        </div>
+
+        <div class="rule-card">
+            <h3>05. Ứng xử văn minh</h3>
+            <p>Giao tiếp lịch sự, giữ gìn hình ảnh và uy tín của câu lạc bộ.</p>
+        </div>
+
+        <div class="rule-card">
+            <h3>06. Bảo mật thông tin</h3>
+            <p>Không tự ý chia sẻ thông tin cá nhân hoặc hình ảnh của thành viên khi chưa được đồng ý.</p>
+        </div>
+    </div>
+</section>
+```
+
+    <!-- HOẠT ĐỘNG -->
+    <section class="activities" id="hoatdong">
+        <h2>Hoạt động nổi bật</h2>
+
+        <div class="activity-container">
+
+            <div class="activity-card">
+                <h3>🎨 Đưa tin sự kiện học đường</h3>
+                <p>
+                    Ghi lại những sự kiện nổi bật, cập nhật tin tức và lan tỏa các hoạt động đáng nhớ của trường.
+                </p>
+            </div>
+
+            <div class="activity-card">
+                <h3>🤝 Hoạt động nhóm</h3>
+                <p>
+                    Rèn luyện kỹ năng hợp tác, giao tiếp và giải quyết
+                    vấn đề thông qua các thử thách tập thể.
+                </p>
+            </div>
+
+            <div class="activity-card">
+                <h3>🌷 Chương trình cộng đồng</h3>
+                <p>
+                    Tham gia các hoạt động tình nguyện, chia sẻ yêu thương
+                    và lan tỏa những giá trị tích cực.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LỊCH SINH HOẠT -->
+    <section class="schedule" id="lich">
+        <h2>Lịch sinh hoạt</h2>
+
+        <table>
+            <tr>
+                <th>Thời gian</th>
+                <th>Nội dung</th>
+                <th>Địa điểm</th>
+            </tr>
+
+            <tr>
+                <td>Thứ Hai: 16h30-17h30</td>
+                <td>Thảo luận ý tưởng</td>
+                <td>Phòng sinh hoạt CLB</td>
+            </tr>
+
+            <tr>
+                <td>Thứ Tư: 16h30-17h30</td>
+                <td>Làm việc nhóm</td>
+                <td>Phòng học</td>
+            </tr>
+
+            <tr>
+                <td>Thứ Sáu: 16h30-17h30</td>
+                <td>Chia sẻ và tổng kết</td>
+                <td>Phòng sinh hoạt CLB</td>
+            </tr>
+        </table>
+
+        <p style="text-align: center; margin-top: 20px;">
+            * Lịch sinh hoạt có thể được điều chỉnh tùy theo kế hoạch của CLB.
+        </p>
+    </section>
+
+    <!-- FORM ĐĂNG KÝ -->
+    <section class="register" id="dangky">
+        <h2>Đăng ký tham gia</h2>
+        <p>
+            Hãy điền thông tin bên dưới để bày tỏ mong muốn
+            trở thành thành viên của chúng mình nhé!
+        </p>
+
+        <form id="registrationForm">
+
+            <label for="fullname">Họ và tên:</label>
+            <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Nhập họ và tên của bạn"
+                required
+            >
+
+            <label for="class">Lớp:</label>
+            <input
+                type="text"
+                id="class"
+                name="class"
+                placeholder="Ví dụ: 12A1"
+                required
+            >
+
+            <label for="email">Email:</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Nhập địa chỉ email"
+                required
+            >
+
+            <label for="interest">Lĩnh vực yêu thích:</label>
+            <select id="interest" name="interest" required>
+                <option value="">-- Chọn lĩnh vực --</option>
+                <option value="Sáng tạo">Sáng tạo ý tưởng</option>
+                <option value="Truyền thông">Truyền thông</option>
+                <option value="Tổ chức">Tổ chức sự kiện</option>
+                <option value="Cộng đồng">Hoạt động cộng đồng</option>
+            </select>
+
+            <label for="reason">Lý do muốn tham gia:</label>
+            <textarea
+                id="reason"
+                name="reason"
+                rows="4"
+                placeholder="Chia sẻ với chúng mình nhé!"
+                required
+            ></textarea>
+
+            <button type="submit" class="button">
+                Gửi đăng ký
+            </button>
+
+        </form>
+    </section>
+
+    <!-- CHÂN TRANG -->
+    <footer>
+        <p><strong>CLB TRẠM THÔNG TIN</strong></p>
+        <p>KẾT NỐI THÔNG TIN, LAN TỎA GIÁ TRỊ</p>
+        <p>Email: tramthongtinthpthongai@gmail.com</p>
+        <p>© 2026 CLB Trạm Thông </p>
+    </footer>
+
+    <!-- XỬ LÝ FORM -->
+    <script>
+        document.getElementById("registrationForm")
+            .addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                alert(
+                    "Cảm ơn bạn đã đăng ký tham gia CLB Sáng Tạo Trẻ! " +
+                    "Chúng mình rất vui khi được kết nối với bạn."
+                );
+
+                this.reset();
+            });
+    </script>
+
+</body>
+</html>
+```
